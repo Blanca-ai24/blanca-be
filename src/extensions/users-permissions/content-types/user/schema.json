@@ -68,6 +68,19 @@
     "phoneNumber": {
       "type": "biginteger",
       "required": false
+    },
+    "profilePicture": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "planType": {
+      "type": "string"
+    },
+    "planExpiryDate": {
+      "type": "string"
     }
   }
 }

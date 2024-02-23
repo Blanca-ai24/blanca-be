@@ -5,10 +5,11 @@ export interface ChatConversations extends Schema.Component {
   info: {
     displayName: 'Conversations';
     icon: 'dashboard';
+    description: '';
   };
   attributes: {
     role: Attribute.String;
-    message: Attribute.String & Attribute.Required;
+    message: Attribute.Text & Attribute.Required;
     media: Attribute.Media;
   };
 }

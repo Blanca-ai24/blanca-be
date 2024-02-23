@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_chat_conversations",
+  "info": {
+    "displayName": "Conversations",
+    "icon": "dashboard"
+  },
+  "options": {},
+  "attributes": {
+    "role": {
+      "type": "string"
+    },
+    "message": {
+      "type": "string",
+      "required": true
+    },
+    "media": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    }
+  }
+}

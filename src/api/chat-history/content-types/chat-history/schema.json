@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "chat_histories",
+  "info": {
+    "singularName": "chat-history",
+    "pluralName": "chat-histories",
+    "displayName": "Chat History",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "chat_history"
+    },
+    "conversations": {
+      "type": "component",
+      "repeatable": true,
+      "component": "chat.conversations"
+    }
+  }
+}

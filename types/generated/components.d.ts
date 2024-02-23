@@ -11,6 +11,7 @@ export interface ChatConversations extends Schema.Component {
     role: Attribute.String;
     message: Attribute.Text & Attribute.Required;
     media: Attribute.Media;
+    dateAdded: Attribute.String;
   };
 }
 

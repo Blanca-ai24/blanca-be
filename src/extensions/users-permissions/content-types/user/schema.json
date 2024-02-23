@@ -82,9 +82,9 @@
     "planExpiryDate": {
       "type": "string"
     },
-    "chat_history": {
+    "chat_histories": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "oneToMany",
       "target": "api::chat-history.chat-history",
       "mappedBy": "user"
     }

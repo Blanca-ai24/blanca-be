@@ -376,7 +376,7 @@ export interface ApiChatHistoryChatHistory extends Schema.CollectionType {
   attributes: {
     user: Attribute.Relation<
       'api::chat-history.chat-history',
-      'oneToOne',
+      'manyToOne',
       'plugin::users-permissions.user'
     >;
     conversations: Attribute.Component<'chat.conversations', true>;
@@ -805,9 +805,9 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
     profilePicture: Attribute.Media;
     planType: Attribute.String;
     planExpiryDate: Attribute.String;
-    chat_history: Attribute.Relation<
+    chat_histories: Attribute.Relation<
       'plugin::users-permissions.user',
-      'oneToOne',
+      'oneToMany',
       'api::chat-history.chat-history'
     >;
     createdAt: Attribute.DateTime;

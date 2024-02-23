@@ -14,9 +14,9 @@
   "attributes": {
     "user": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "manyToOne",
       "target": "plugin::users-permissions.user",
-      "inversedBy": "chat_history"
+      "inversedBy": "chat_histories"
     },
     "conversations": {
       "type": "component",

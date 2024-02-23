@@ -81,6 +81,12 @@
     },
     "planExpiryDate": {
       "type": "string"
+    },
+    "chat_history": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::chat-history.chat-history",
+      "mappedBy": "user"
     }
   }
 }

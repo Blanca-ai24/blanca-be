@@ -2,7 +2,8 @@
   "collectionName": "components_chat_conversations",
   "info": {
     "displayName": "Conversations",
-    "icon": "dashboard"
+    "icon": "dashboard",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -10,18 +11,19 @@
       "type": "string"
     },
     "message": {
-      "type": "string",
+      "type": "text",
       "required": true
     },
     "media": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
     }
   }
 }

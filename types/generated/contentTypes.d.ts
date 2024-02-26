@@ -777,7 +777,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   attributes: {
     username: Attribute.String &
       Attribute.Required &
-      Attribute.Unique &
       Attribute.SetMinMaxLength<{
         minLength: 3;
       }>;
@@ -801,7 +800,7 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'manyToOne',
       'plugin::users-permissions.role'
     >;
-    phoneNumber: Attribute.BigInteger;
+    phoneNumber: Attribute.String;
     profilePicture: Attribute.Media;
     planType: Attribute.String;
     planExpiryDate: Attribute.String;

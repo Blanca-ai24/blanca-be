@@ -805,6 +805,7 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
     profilePicture: Attribute.Media;
     planType: Attribute.String;
     planExpiryDate: Attribute.String;
+    fullname: Attribute.String & Attribute.Required;
     chat_histories: Attribute.Relation<
       'plugin::users-permissions.user',
       'oneToMany',

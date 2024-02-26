@@ -362,6 +362,42 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
+export interface ApiChatHistoryChatHistory extends Schema.CollectionType {
+  collectionName: 'chat_histories';
+  info: {
+    singularName: 'chat-history';
+    pluralName: 'chat-histories';
+    displayName: 'Chat History';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    user: Attribute.Relation<
+      'api::chat-history.chat-history',
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
+    conversations: Attribute.Component<'chat.conversations', true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::chat-history.chat-history',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::chat-history.chat-history',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -770,6 +806,11 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
     planType: Attribute.String;
     planExpiryDate: Attribute.String;
     fullname: Attribute.String & Attribute.Required;
+    chat_histories: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToMany',
+      'api::chat-history.chat-history'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -797,6 +838,7 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
+      'api::chat-history.chat-history': ApiChatHistoryChatHistory;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;

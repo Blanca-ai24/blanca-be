@@ -86,7 +86,10 @@
     "fullname": {
       "type": "string",
       "required": true
+<<<<<<< HEAD
     },
+=======
+>>>>>>> f0549f8082eda106455699f96a0ddf861115f4d1
     "chat_histories": {
       "type": "relation",
       "relation": "oneToMany",

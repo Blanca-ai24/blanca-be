@@ -70,17 +70,22 @@
       "required": false
     },
     "profilePicture": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "planType": {
       "type": "string"
     },
     "planExpiryDate": {
       "type": "string"
+    },
+    "fullname": {
+      "type": "string",
+      "required": true
     }
   }
 }

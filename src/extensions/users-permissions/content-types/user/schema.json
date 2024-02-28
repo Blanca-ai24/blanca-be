@@ -92,6 +92,12 @@
       "relation": "oneToMany",
       "target": "api::chat-history.chat-history",
       "mappedBy": "user"
+    },
+    "conversation": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::conversation.conversation",
+      "mappedBy": "user"
     }
   }
 }

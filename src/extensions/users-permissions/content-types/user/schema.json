@@ -93,11 +93,14 @@
       "target": "api::chat-history.chat-history",
       "mappedBy": "user"
     },
-    "conversation": {
+    "conversations": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "oneToMany",
       "target": "api::conversation.conversation",
       "mappedBy": "user"
+    },
+    "messageCount": {
+      "type": "integer"
     }
   }
 }

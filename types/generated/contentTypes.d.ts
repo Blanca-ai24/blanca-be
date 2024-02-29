@@ -413,12 +413,12 @@ export interface ApiConversationConversation extends Schema.CollectionType {
     message: Attribute.Text;
     user: Attribute.Relation<
       'api::conversation.conversation',
-      'oneToOne',
+      'manyToOne',
       'plugin::users-permissions.user'
     >;
     media: Attribute.Media;
     role: Attribute.String;
-    aiResponse: Attribute.Text;
+    time: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -849,11 +849,12 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'oneToMany',
       'api::chat-history.chat-history'
     >;
-    conversation: Attribute.Relation<
+    conversations: Attribute.Relation<
       'plugin::users-permissions.user',
-      'oneToOne',
+      'oneToMany',
       'api::conversation.conversation'
     >;
+    messageCount: Attribute.Integer;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

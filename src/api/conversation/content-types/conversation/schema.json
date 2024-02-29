@@ -17,9 +17,9 @@
     },
     "user": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "manyToOne",
       "target": "plugin::users-permissions.user",
-      "inversedBy": "conversation"
+      "inversedBy": "conversations"
     },
     "media": {
       "type": "media",
@@ -35,8 +35,8 @@
     "role": {
       "type": "string"
     },
-    "aiResponse": {
-      "type": "text"
+    "time": {
+      "type": "string"
     }
   }
 }

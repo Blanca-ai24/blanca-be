@@ -1,6 +1,6 @@
 module.exports = {
   /**
-   * Update user data every 2 minutes.
+   * Update user data every day 12AM.
    */
   "0 0 * * *": async ({ strapi }) => {
     try {

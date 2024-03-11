@@ -1,15 +1,20 @@
 module.exports = {
   /**
-   * Update user data at the beginning of every day (00:00).
+   * Update user data every day 12AM.
    */
-
   "0 0 * * *": async ({ strapi }) => {
     try {
       // Your logic to update user data here
       // For example, updating a specific field for all users:
-      await strapi
-        .query("user", "users-permissions")
-        .update({}, { messageCount: 5 });
+      const entry = await strapi.db
+        .query("plugin::users-permissions.user")
+        .updateMany({
+          data: {
+            messageCount: 5,
+          },
+        });
+
+      console.log("entry", entry);
 
       console.log("User data updated successfully");
     } catch (err) {
@@ -17,3 +22,4 @@ module.exports = {
     }
   },
 };
+ 

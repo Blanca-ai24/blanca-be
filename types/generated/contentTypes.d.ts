@@ -398,39 +398,67 @@ export interface ApiChatHistoryChatHistory extends Schema.CollectionType {
   };
 }
 
-export interface ApiForgotPasswordForgotPassword extends Schema.CollectionType {
-  collectionName: 'forgot_passwords';
+export interface ApiConversationConversation extends Schema.CollectionType {
+  collectionName: 'conversations';
   info: {
-    singularName: 'forgot-password';
-    pluralName: 'forgot-passwords';
-    displayName: 'forgot-password';
+    singularName: 'conversation';
+    pluralName: 'conversations';
+    displayName: 'Conversation';
     description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
+    message: Attribute.Text;
     user: Attribute.Relation<
-      'api::forgot-password.forgot-password',
-      'oneToOne',
+      'api::conversation.conversation',
+      'manyToOne',
       'plugin::users-permissions.user'
     >;
-    code: Attribute.String;
-    status: Attribute.Boolean & Attribute.DefaultTo<false>;
+    media: Attribute.Media;
+    role: Attribute.String;
+    time: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::forgot-password.forgot-password',
+      'api::conversation.conversation',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::forgot-password.forgot-password',
+      'api::conversation.conversation',
       'oneToOne',
       'admin::user'
     > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiLeadLead extends Schema.CollectionType {
+  collectionName: 'leads';
+  info: {
+    singularName: 'lead';
+    pluralName: 'leads';
+    displayName: 'Lead';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    expertise: Attribute.String;
+    state: Attribute.String;
+    contactInfo: Attribute.Component<'chat.contact-info'>;
+    conversations: Attribute.Component<'chat.conversations', true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::lead.lead', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::lead.lead', 'oneToOne', 'admin::user'> &
       Attribute.Private;
   };
 }
@@ -847,6 +875,12 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'oneToMany',
       'api::chat-history.chat-history'
     >;
+    conversations: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToMany',
+      'api::conversation.conversation'
+    >;
+    messageCount: Attribute.Integer;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -875,7 +909,8 @@ declare module '@strapi/types' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'api::chat-history.chat-history': ApiChatHistoryChatHistory;
-      'api::forgot-password.forgot-password': ApiForgotPasswordForgotPassword;
+      'api::conversation.conversation': ApiConversationConversation;
+      'api::lead.lead': ApiLeadLead;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;

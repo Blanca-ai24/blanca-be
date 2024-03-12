@@ -437,6 +437,32 @@ export interface ApiConversationConversation extends Schema.CollectionType {
   };
 }
 
+export interface ApiLeadLead extends Schema.CollectionType {
+  collectionName: 'leads';
+  info: {
+    singularName: 'lead';
+    pluralName: 'leads';
+    displayName: 'Lead';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    expertise: Attribute.String;
+    state: Attribute.String;
+    contactInfo: Attribute.Component<'chat.contact-info'>;
+    conversations: Attribute.Component<'chat.conversations', true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::lead.lead', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::lead.lead', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -884,6 +910,7 @@ declare module '@strapi/types' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'api::chat-history.chat-history': ApiChatHistoryChatHistory;
       'api::conversation.conversation': ApiConversationConversation;
+      'api::lead.lead': ApiLeadLead;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;

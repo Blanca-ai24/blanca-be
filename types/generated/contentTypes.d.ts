@@ -398,6 +398,43 @@ export interface ApiChatHistoryChatHistory extends Schema.CollectionType {
   };
 }
 
+export interface ApiForgotPasswordForgotPassword extends Schema.CollectionType {
+  collectionName: 'forgot_passwords';
+  info: {
+    singularName: 'forgot-password';
+    pluralName: 'forgot-passwords';
+    displayName: 'forgot-password';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    user: Attribute.Relation<
+      'api::forgot-password.forgot-password',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+    code: Attribute.String;
+    status: Attribute.Boolean & Attribute.DefaultTo<false>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::forgot-password.forgot-password',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::forgot-password.forgot-password',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -838,6 +875,7 @@ declare module '@strapi/types' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'api::chat-history.chat-history': ApiChatHistoryChatHistory;
+      'api::forgot-password.forgot-password': ApiForgotPasswordForgotPassword;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;

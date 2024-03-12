@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_chat_contact_infos",
+  "info": {
+    "displayName": "Contact Info",
+    "icon": "dashboard"
+  },
+  "options": {},
+  "attributes": {
+    "fullName": {
+      "type": "string"
+    },
+    "phoneNumber": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    }
+  }
+}

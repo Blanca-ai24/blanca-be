@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "leads",
+  "info": {
+    "singularName": "lead",
+    "pluralName": "leads",
+    "displayName": "Lead",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "expertise": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string"
+    },
+    "contactInfo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "chat.contact-info"
+    },
+    "conversations": {
+      "type": "component",
+      "repeatable": true,
+      "component": "chat.conversations"
+    }
+  }
+}

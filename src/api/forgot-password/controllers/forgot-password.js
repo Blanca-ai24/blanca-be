@@ -47,7 +47,7 @@ module.exports = {
       },
     });
 
-    const sender_link = `${process.env.WEBSITE_URL}/auth/reset-password/?token=${resetCode}`
+    const sender_link = `${process.env.WEBSITE_URL}/forgot-password/?token=${resetCode}`
 
     // Implement your email sending logic here to send the reset code
     // Example: await sendResetCodeEmail(user.email, resetCode);
@@ -55,10 +55,10 @@ module.exports = {
     const isEmailSend = await strapi.plugin('email').service('email').send({
       to: email, // Replace with the user's email
       from: process.env.SMTP_USERNAME,
-      subject: 'Password Reset for Jason',
+      subject: 'Password Reset for Blanca',
       text: `Hello,
       
-      You have requested to reset your password for your JASON account.
+      You have requested to reset your password for your Blanca account.
       
       Please use the following link to proceed with the password reset:
        ${sender_link}
@@ -66,14 +66,14 @@ module.exports = {
       If you did not initiate this request, you can safely ignore this email.
       
       Best regards,
-      The Jason Team`,
+      The Blanca Team`,
       html: `
-          <h4>Password Reset for Jason</h4>
-          <p>You have requested to reset your password for your Jason account.</p>
+          <h4>Password Reset for Blanca</h4>
+          <p>You have requested to reset your password for your Blanca account.</p>
           <p>Please use the following link to proceed with the password reset:</p>
           <p><strong>${sender_link}</strong></p>
           <p>If you did not initiate this request, you can safely ignore this email.</p>
-          <p>Best regards,<br />The Jason Team</p>
+          <p>Best regards,<br />The Blanca Team</p>
         `,
     });
 

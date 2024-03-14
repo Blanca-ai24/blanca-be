@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_chat_office_addresses",
+  "info": {
+    "displayName": "Office Address",
+    "icon": "calendar"
+  },
+  "options": {},
+  "attributes": {
+    "street": {
+      "type": "string"
+    },
+    "province": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "postalCode": {
+      "type": "string"
+    }
+  }
+}

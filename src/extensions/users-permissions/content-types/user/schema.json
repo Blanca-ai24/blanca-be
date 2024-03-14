@@ -101,6 +101,27 @@
     },
     "messageCount": {
       "type": "integer"
+    },
+    "expertise": {
+      "type": "string"
+    },
+    "nameOfOfficeOrProfessional": {
+      "type": "string"
+    },
+    "cif_nif": {
+      "type": "string"
+    },
+    "userType": {
+      "type": "enumeration",
+      "enum": [
+        "user",
+        "professional"
+      ]
+    },
+    "officeAddress": {
+      "type": "component",
+      "repeatable": false,
+      "component": "chat.office-address"
     }
   }
 }

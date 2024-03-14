@@ -33,11 +33,26 @@ export interface ChatConversations extends Schema.Component {
   };
 }
 
+export interface ChatOfficeAddress extends Schema.Component {
+  collectionName: 'components_chat_office_addresses';
+  info: {
+    displayName: 'Office Address';
+    icon: 'calendar';
+  };
+  attributes: {
+    street: Attribute.String;
+    province: Attribute.String;
+    city: Attribute.String;
+    postalCode: Attribute.String;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
       'chat.contact-info': ChatContactInfo;
       'chat.conversations': ChatConversations;
+      'chat.office-address': ChatOfficeAddress;
     }
   }
 }

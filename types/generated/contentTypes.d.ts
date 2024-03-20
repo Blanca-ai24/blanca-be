@@ -989,7 +989,7 @@ export interface ApiMessageMessage extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    message: Attribute.String;
+    message: Attribute.Text;
     media: Attribute.Media;
     role: Attribute.String;
     time: Attribute.String;

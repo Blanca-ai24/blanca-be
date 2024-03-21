@@ -87,18 +87,6 @@
       "type": "string",
       "required": false
     },
-    "chat_histories": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::chat-history.chat-history",
-      "mappedBy": "user"
-    },
-    "conversations": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::conversation.conversation",
-      "mappedBy": "user"
-    },
     "messageCount": {
       "type": "integer"
     },

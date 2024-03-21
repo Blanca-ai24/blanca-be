@@ -769,16 +769,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
     planType: Attribute.String;
     planExpiryDate: Attribute.String;
     fullname: Attribute.String;
-    chat_histories: Attribute.Relation<
-      'plugin::users-permissions.user',
-      'oneToMany',
-      'api::chat-history.chat-history'
-    >;
-    conversations: Attribute.Relation<
-      'plugin::users-permissions.user',
-      'oneToMany',
-      'api::conversation.conversation'
-    >;
     messageCount: Attribute.Integer;
     expertise: Attribute.String;
     nameOfOfficeOrProfessional: Attribute.String;
@@ -835,81 +825,6 @@ export interface ApiChatChat extends Schema.CollectionType {
     createdBy: Attribute.Relation<'api::chat.chat', 'oneToOne', 'admin::user'> &
       Attribute.Private;
     updatedBy: Attribute.Relation<'api::chat.chat', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-  };
-}
-
-export interface ApiChatHistoryChatHistory extends Schema.CollectionType {
-  collectionName: 'chat_histories';
-  info: {
-    singularName: 'chat-history';
-    pluralName: 'chat-histories';
-    displayName: 'Chat History';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    user: Attribute.Relation<
-      'api::chat-history.chat-history',
-      'manyToOne',
-      'plugin::users-permissions.user'
-    >;
-    conversations: Attribute.Component<'chat.conversations', true>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::chat-history.chat-history',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::chat-history.chat-history',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiConversationConversation extends Schema.CollectionType {
-  collectionName: 'conversations';
-  info: {
-    singularName: 'conversation';
-    pluralName: 'conversations';
-    displayName: 'Conversation';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    message: Attribute.Text;
-    user: Attribute.Relation<
-      'api::conversation.conversation',
-      'manyToOne',
-      'plugin::users-permissions.user'
-    >;
-    media: Attribute.Media;
-    role: Attribute.String;
-    time: Attribute.String;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::conversation.conversation',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::conversation.conversation',
-      'oneToOne',
-      'admin::user'
-    > &
       Attribute.Private;
   };
 }
@@ -1035,8 +950,6 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::chat.chat': ApiChatChat;
-      'api::chat-history.chat-history': ApiChatHistoryChatHistory;
-      'api::conversation.conversation': ApiConversationConversation;
       'api::forgot-password.forgot-password': ApiForgotPasswordForgotPassword;
       'api::lead.lead': ApiLeadLead;
       'api::message.message': ApiMessageMessage;

@@ -56,24 +56,24 @@ module.exports = {
       to: email, // Replace with the user's email
       from: process.env.SMTP_USERNAME,
       subject: 'Password Reset for Blanca',
-      text: `Hello,
+      text: `Restablecimiento de contraseña para MarIA,
       
-      You have requested to reset your password for your Blanca account.
+      Has solicitado restablecer tu contraseña para tu cuenta de MarIA.
       
-      Please use the following link to proceed with the password reset:
+      Por favor, utiliza el siguiente enlace para proceder con el restablecimiento de la contraseña:
        ${sender_link}
       
-      If you did not initiate this request, you can safely ignore this email.
+       Si no iniciaste esta solicitud, puedes ignorar este correo electrónico de forma segura.
       
-      Best regards,
-      The Blanca Team`,
+       Atentamente,
+       MarIA.`,
       html: `
-          <h4>Password Reset for Blanca</h4>
-          <p>You have requested to reset your password for your Blanca account.</p>
-          <p>Please use the following link to proceed with the password reset:</p>
+          <h4>Restablecimiento de contraseña para MarIA</h4>
+          <p>Has solicitado restablecer tu contraseña para tu cuenta de MarIA.</p>
+          <p>Por favor, utiliza el siguiente enlace para proceder con el restablecimiento de la contraseña:</p>
           <p><strong>${sender_link}</strong></p>
-          <p>If you did not initiate this request, you can safely ignore this email.</p>
-          <p>Best regards,<br />The Blanca Team</p>
+          <p>Si no iniciaste esta solicitud, puedes ignorar este correo electrónico de forma segura.</p>
+          <p>Atentamente,<br />MarIA.</p>
         `,
     });
 
